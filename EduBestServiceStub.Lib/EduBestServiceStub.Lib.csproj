@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5493CC3A-BF7F-486F-B209-3C623D85A70B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EduBestServiceStub.Lib</RootNamespace>
+    <AssemblyName>EduBestServiceStub.Lib</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bestClientProxy.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="NoarkExchangeXmlFileReader.cs" />
+    <Compile Include="NoarkTypes\AddressType.cs" />
+    <Compile Include="NoarkTypes\AppReceiptType.cs" />
+    <Compile Include="NoarkTypes\AppReceiptTypeType.cs" />
+    <Compile Include="NoarkTypes\AvsmotType.cs" />
+    <Compile Include="NoarkTypes\DokumentnummerType.cs" />
+    <Compile Include="NoarkTypes\DokumentType.cs" />
+    <Compile Include="NoarkTypes\EksternDataType.cs" />
+    <Compile Include="NoarkTypes\EksternNokkelType.cs" />
+    <Compile Include="NoarkTypes\EnvelopeType.cs" />
+    <Compile Include="NoarkTypes\FilType.cs" />
+    <Compile Include="NoarkTypes\GetCanReceiveMessageResponseType.cs" />
+    <Compile Include="NoarkTypes\GetCanReceiveMessageRequestType.cs" />
+    <Compile Include="NoarkTypes\GetJournpostRequestType.cs" />
+    <Compile Include="NoarkTypes\GetJournpostResponseType.cs" />
+    <Compile Include="NoarkTypes\GetNoarksakRequestType.cs" />
+    <Compile Include="NoarkTypes\GetNoarksakResponseType.cs" />
+    <Compile Include="NoarkTypes\ItemsChoiceType.cs" />
+    <Compile Include="NoarkTypes\JournpostReturnRequestsType.cs" />
+    <Compile Include="NoarkTypes\JournpostType.cs" />
+    <Compile Include="NoarkTypes\KlasseringType.cs" />
+    <Compile Include="NoarkTypes\LopenummerType.cs" />
+    <Compile Include="NoarkTypes\MeldingType.cs" />
+    <Compile Include="NoarkTypes\MessageType.cs" />
+    <Compile Include="NoarkTypes\NoarksakReturnRequestsType.cs" />
+    <Compile Include="NoarkTypes\NoarksakType.cs" />
+    <Compile Include="NoarkTypes\PutJournpostRequestType.cs" />
+    <Compile Include="NoarkTypes\PutJournpostResponseType.cs" />
+    <Compile Include="NoarkTypes\PutMessageRequestType.cs" />
+    <Compile Include="NoarkTypes\PutMessageResponseType.cs" />
+    <Compile Include="NoarkTypes\PutNoarksakRequestType.cs" />
+    <Compile Include="NoarkTypes\PutNoarksakResponseType.cs" />
+    <Compile Include="NoarkTypes\SaksnummerType.cs" />
+    <Compile Include="NoarkTypes\SakspartType.cs" />
+    <Compile Include="NoarkTypes\SearchCriteriaType.cs" />
+    <Compile Include="NoarkTypes\StatusMessageType.cs" />
+    <Compile Include="NoarkTypes\StatusType.cs" />
+    <Compile Include="NoarkTypes\StatusTypeType.cs" />
+    <Compile Include="NoarkTypes\TilleggsinfoType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
