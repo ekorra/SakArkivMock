@@ -3,13 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapper", "FiksMapper\Mapper.csproj", "{C9D26F4E-0B58-474A-8FAA-8DF5E8DE6F8F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.Lib", "EduBestServiceStub.Lib\EduBestServiceStub.Lib.csproj", "{5493CC3A-BF7F-486F-B209-3C623D85A70B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.Service", "EduBestServiceStub.Service\EduBestServiceStub.Service.csproj", "{513E926E-6191-417A-8692-989CDC8D0919}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiks", "Fiks\Fiks.csproj", "{089D6145-7FC3-4671-8C33-63E6F5F27C84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.Console", "BestEduServiceStub.Console\EduBestServiceStub.Console.csproj", "{9EB4C521-25D1-4BE4-9294-2BE4B202E207}"
 EndProject
@@ -19,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C9D26F4E-0B58-474A-8FAA-8DF5E8DE6F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9D26F4E-0B58-474A-8FAA-8DF5E8DE6F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9D26F4E-0B58-474A-8FAA-8DF5E8DE6F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9D26F4E-0B58-474A-8FAA-8DF5E8DE6F8F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5493CC3A-BF7F-486F-B209-3C623D85A70B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5493CC3A-BF7F-486F-B209-3C623D85A70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5493CC3A-BF7F-486F-B209-3C623D85A70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,10 +23,6 @@ Global
 		{513E926E-6191-417A-8692-989CDC8D0919}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{513E926E-6191-417A-8692-989CDC8D0919}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{513E926E-6191-417A-8692-989CDC8D0919}.Release|Any CPU.Build.0 = Release|Any CPU
-		{089D6145-7FC3-4671-8C33-63E6F5F27C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{089D6145-7FC3-4671-8C33-63E6F5F27C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{089D6145-7FC3-4671-8C33-63E6F5F27C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{089D6145-7FC3-4671-8C33-63E6F5F27C84}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9EB4C521-25D1-4BE4-9294-2BE4B202E207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EB4C521-25D1-4BE4-9294-2BE4B202E207}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EB4C521-25D1-4BE4-9294-2BE4B202E207}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -55,10 +55,6 @@
       <Project>{5493CC3A-BF7F-486F-B209-3C623D85A70B}</Project>
       <Name>EduBestServiceStub.Lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FiksMapper\Mapper.csproj">
-      <Project>{c9d26f4e-0b58-474a-8faa-8df5e8de6f8f}</Project>
-      <Name>Mapper</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

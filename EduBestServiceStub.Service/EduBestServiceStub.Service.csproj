@@ -97,10 +97,6 @@
       <Project>{5493cc3a-bf7f-486f-b209-3c623d85a70b}</Project>
       <Name>EduBestServiceStub.Lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fiks\Fiks.csproj">
-      <Project>{089d6145-7fc3-4671-8c33-63e6f5f27c84}</Project>
-      <Name>Fiks</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

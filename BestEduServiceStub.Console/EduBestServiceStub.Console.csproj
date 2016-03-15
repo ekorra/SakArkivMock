@@ -69,10 +69,6 @@
       <Project>{5493cc3a-bf7f-486f-b209-3c623d85a70b}</Project>
       <Name>EduBestServiceStub.Lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FiksMapper\Mapper.csproj">
-      <Project>{c9d26f4e-0b58-474a-8faa-8df5e8de6f8f}</Project>
-      <Name>Mapper</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
