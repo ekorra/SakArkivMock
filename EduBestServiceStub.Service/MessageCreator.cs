@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Web;
+using System.Xml.Serialization;
 using EduBestServiceStub.Lib.NoarkTypes;
 
 namespace EduBestServiceStub.Service
@@ -27,7 +29,7 @@ namespace EduBestServiceStub.Service
                     orgnr = receiverOrgnr,
                 };
                 result = noarkExchange.GetCanReceiveMessage(message).result;
-                Debug.WriteLine("result {result}", result);
+                Debug.WriteLine($"result {result}", result);
             }
             catch (Exception e)
             {
@@ -65,7 +67,8 @@ namespace EduBestServiceStub.Service
             var message = new PutMessageRequestType();
             message.envelope = GetEnvelope(receiver, sender, conversationId);
             var payload = GetOkAppReceipt();
-            message.Payload = HttpUtility.HtmlEncode(payload);
+            var xmlString = GetString(payload);
+            message.Payload = HttpUtility.HtmlEncode(xmlString);
 
             Debug.WriteLine("Sending AppReceipt");
             var result =  noarkExchange.PutMessage(message);
@@ -99,5 +102,15 @@ namespace EduBestServiceStub.Service
             return envelope;
         }
 
+        private string GetString<T>(T obj)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+
+            using (StringWriter textWriter = new StringWriter())
+            {
+                xmlSerializer.Serialize(textWriter, obj);
+                return textWriter.ToString();
+            }
+        }
     }
 }

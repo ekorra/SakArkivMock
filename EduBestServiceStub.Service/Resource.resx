@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="IntegrasjonspunktUrl" xml:space="preserve">
-    <value>http://l-eko-m92p:9093/noarkExchange</value>
+    <value>http://localhost:9093/:9093/noarkExchange</value>
   </data>
   <data name="Organisasjonsnummer" xml:space="preserve">
     <value>810076402</value>

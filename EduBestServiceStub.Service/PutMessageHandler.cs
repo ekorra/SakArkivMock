@@ -46,9 +46,9 @@ namespace EduBestServiceStub.Service
             {
                 messageCreator.SendAppReceipt(sender, receiver, conversationId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Debug.WriteLine("AppReceipt feilet");
+                Debug.WriteLine($"AppReceipt feilet: {ex.Message}");
             }
             return GetOkResponse();
         }

@@ -61,7 +61,7 @@ namespace EduBestServiceStub.Service {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://l-eko-m92p:9093/noarkExchange.
+        ///   Looks up a localized string similar to http://localhost:9093/:9093/noarkExchange.
         /// </summary>
         internal static string IntegrasjonspunktUrl {
             get {
