@@ -15,7 +15,7 @@ using System.Web.Services.Protocols;
 using System.Xml.Serialization;
 using EduBestServiceStub.Lib.NoarkTypes;
 
-namespace EduBestServiceStub.Lib
+namespace EduBestServiceStub.Service
 {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.0.30319.33440")]
@@ -39,7 +39,12 @@ namespace EduBestServiceStub.Lib
     
         /// <remarks/>
         public noarkExchange() {
-           
+            
+        }
+
+        public noarkExchange(string endpointUrl)
+        {
+            Url = endpointUrl;
         }
     
         /// <remarks/>

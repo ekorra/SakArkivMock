@@ -1,5 +1,7 @@
 ﻿using System;
+using EduBestServiceStub.Lib;
 using EduBestServiceStub.Lib.NoarkTypes;
+using EduBestServiceStub.Service;
 
 namespace EduBestServiceStub.Console
 {
@@ -11,7 +13,7 @@ namespace EduBestServiceStub.Console
         {
             const string senderOrgNr = "910075918";
             System.Console.WriteLine("Started");
-            MessageSender messageSender = new MessageSender(senderOrgNr);
+            MessageCreator messageCreator = new MessageCreator(senderOrgNr, "");
 
             bool canSend = false;
             string receiverOrgnr = string.Empty;
@@ -20,7 +22,7 @@ namespace EduBestServiceStub.Console
             
             try
             {
-                canSend = messageSender.CanSend(receiverOrgnr);
+                canSend = messageCreator.CanSend(receiverOrgnr);
                 System.Console.WriteLine("{orgrnr} can receive messages: {canSend}");
             }
             catch (Exception e)
@@ -30,18 +32,12 @@ namespace EduBestServiceStub.Console
 
             if (canSend)
             {
-                var result = messageSender.SendMessage("910077473");
+                var result = messageCreator.SendMessage("910077473");
                 System.Console.WriteLine("Message {0} sent", result?"was":"was not");
             }
 
             System.Console.WriteLine("Hit a key to continue");
             System.Console.ReadKey();
         }
-
-        
-
-        
-
-        
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -30,15 +31,29 @@ namespace EduBestServiceStub.Service
             XDocument doc = XDocument.Parse(decoded);
             
             var journalpost = doc.Descendants("journpost").FirstOrDefault();
-            var sak = doc.Descendants("").FirstOrDefault();
-
-
-
+            //var sak = doc.Descendants("").FirstOrDefault();
+            
             //var melding = GetMelding(putMessageRequest.Payload);
+            var messageCreator = new MessageCreator(Resource.Organisasjonsnummer, Resource.IntegrasjonspunktUrl);
 
+            var receiver = putMessageRequest.envelope.receiver.orgnr;
+            var sender = putMessageRequest.envelope.sender.orgnr;
+            var conversationId = putMessageRequest.envelope.conversationId;
 
+            Debug.WriteLine($"Mottatt melding fra: {sender}, til: {receiver} conversationId: {conversationId} journalpostId: {journalpost}");
+
+            try
+            {
+                messageCreator.SendAppReceipt(sender, receiver, conversationId);
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("AppReceipt feilet");
+            }
             return GetOkResponse();
         }
+
+        
 
        public Stream StringToStream(string s)
         {
@@ -57,7 +72,7 @@ namespace EduBestServiceStub.Service
             {
                 result = new AppReceiptType
                 {
-                    message = GetStatuMessage("1", "True"),
+                    message = GetStatuMessage("Recno", new Random().Next(999999).ToString()),
                     type = AppReceiptTypeType.OK
                 }
             };
@@ -70,7 +85,7 @@ namespace EduBestServiceStub.Service
             {
                 result = new AppReceiptType
                 {
-                    message = GetStatuMessage("0", "Payload missing"),
+                    message = GetStatuMessage("ERROR", "Payload missing"),
                     type = AppReceiptTypeType.ERROR
                 }
             };
