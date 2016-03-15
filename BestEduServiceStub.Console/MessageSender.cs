@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EduBestServiceStub.Lib.NoarkTypes;
-using log4net.Util;
 
 namespace EduBestServiceStub.Console
 {
@@ -60,8 +55,17 @@ namespace EduBestServiceStub.Console
             };
 
             var request = fiksObject.GetBestEduMelding();
+            PutMessageResponseType result;
 
-            var result = noarkExchange.PutMessage(request);
+            try
+            {
+                result = noarkExchange.PutMessage(request);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            
             return result.result.type == AppReceiptTypeType.OK;
         }
 

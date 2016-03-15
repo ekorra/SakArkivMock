@@ -14,11 +14,13 @@ namespace EduBestServiceStub.Console
             MessageSender messageSender = new MessageSender(senderOrgNr);
 
             bool canSend = false;
-            string orgnr = string.Empty;
-
+            string receiverOrgnr = string.Empty;
+            System.Console.WriteLine("Enter receivers orgnr:");
+            receiverOrgnr = System.Console.ReadLine();
+            
             try
             {
-                canSend = messageSender.CanSend(orgnr);
+                canSend = messageSender.CanSend(receiverOrgnr);
                 System.Console.WriteLine("{orgrnr} can receive messages: {canSend}");
             }
             catch (Exception e)
@@ -32,6 +34,7 @@ namespace EduBestServiceStub.Console
                 System.Console.WriteLine("Message {0} sent", result?"was":"was not");
             }
 
+            System.Console.WriteLine("Hit a key to continue");
             System.Console.ReadKey();
         }
 
