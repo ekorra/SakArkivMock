@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Web;
+using System.Xml;
 using System.Xml.Serialization;
 using EduBestServiceStub.Lib.NoarkTypes;
 
@@ -66,8 +68,8 @@ namespace EduBestServiceStub.Service
         {
             var message = new PutMessageRequestType();
             message.envelope = GetEnvelope(receiver, sender, conversationId);
-            var payload = GetOkAppReceipt();
-            var xmlString = GetString(payload);
+            var appReceipt = GetOkAppReceipt();
+            var xmlString = GetString(appReceipt);
             message.Payload = HttpUtility.HtmlEncode(xmlString);
 
             Debug.WriteLine("Sending AppReceipt");
@@ -104,13 +106,7 @@ namespace EduBestServiceStub.Service
 
         private string GetString<T>(T obj)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
-
-            using (StringWriter textWriter = new StringWriter())
-            {
-                xmlSerializer.Serialize(textWriter, obj);
-                return textWriter.ToString();
-            }
+            return "&lt;AppReceipt type=\"OK\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.arkivverket.no/Noark/Exchange/types\"&gt;& lt; message code =\"ID\" xmlns=\"\"&gt;& lt; text & gt; 210725 & lt;/ text & gt;&lt;/ message & gt;&lt;/ AppReceipt & gt;";
         }
     }
 }
