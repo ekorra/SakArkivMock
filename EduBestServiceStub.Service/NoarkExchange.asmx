@@ -1,1 +1,0 @@
-﻿<%@ WebService Language="C#" CodeBehind="NoarkExchange.asmx.cs" Class="EduBestServiceStub.Service.NoarkExchange" %>

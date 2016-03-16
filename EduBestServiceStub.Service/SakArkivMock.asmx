@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="SakArkivMock.asmx.cs" Class="EduBestServiceStub.Service.NoarkExchange" %>
