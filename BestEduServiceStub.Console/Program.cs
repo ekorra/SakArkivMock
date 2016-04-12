@@ -7,13 +7,14 @@ namespace EduBestServiceStub.Console
 {
     class Program
     {
-        private static noarkExchange noarkExchange;
+        private static INoarkExchange noarkExchange;
 
         static void Main(string[] args)
         {
             const string senderOrgNr = "910075918";
             System.Console.WriteLine("Started");
-            MessageCreator messageCreator = new MessageCreator(senderOrgNr, "");
+            var noarkExchanteClient = new noarkExchange {Url = ""};
+            MessageCreator messageCreator = new MessageCreator(senderOrgNr, noarkExchange);
 
             bool canSend = false;
             string receiverOrgnr = string.Empty;

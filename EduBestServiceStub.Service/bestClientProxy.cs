@@ -31,7 +31,8 @@ namespace EduBestServiceStub.Service
     [XmlInclude(typeof(GetNoarksakResponseType))]
     [XmlInclude(typeof(GetNoarksakRequestType))]
     [XmlInclude(typeof(MeldingType))]
-    public partial class noarkExchange : System.Web.Services.Protocols.SoapHttpClientProtocol {
+    public partial class noarkExchange : System.Web.Services.Protocols.SoapHttpClientProtocol, INoarkExchange
+    {
     
         private System.Threading.SendOrPostCallback GetCanReceiveMessageOperationCompleted;
     

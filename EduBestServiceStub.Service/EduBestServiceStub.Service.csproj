@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="bestClientProxy.cs" />
     <Compile Include="GetCanRecieveMessageHandler.cs" />
+    <Compile Include="INoarkExchange.cs" />
     <Compile Include="MessageCreator.cs" />
     <Compile Include="SakArkivMock.asmx.cs">
       <DependentUpon>SakArkivMock.asmx</DependentUpon>
