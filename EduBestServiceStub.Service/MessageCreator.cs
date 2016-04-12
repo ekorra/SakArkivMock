@@ -51,7 +51,7 @@ namespace EduBestServiceStub.Service
             {
                 result = noarkExchangeClient.PutMessage(request);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

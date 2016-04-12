@@ -104,5 +104,14 @@ namespace EduBestServiceStub.ServiceTests {
                 return ResourceManager.GetString("WebSakBestEduMessagePayload", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;lt;Melding xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xmlns:xsd=&amp;quot;http://www.w3.org/2001/XMLSchema&amp;quot; xmlns=&amp;quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&amp;quot;&amp;gt;&amp;lt;journpost xmlns=&amp;quot;&amp;quot;&amp;gt;&amp;lt;jpId&amp;gt;2013002997&amp;lt;/jpId&amp;gt;&amp;lt;jpJaar&amp;gt;2013&amp;lt;/jpJaar&amp;gt;&amp;lt;jpSeknr&amp;gt;2997&amp;lt;/jpSeknr&amp;gt;&amp;lt;jpJdato&amp;gt;2016-04-05&amp;lt;/jpJdato&amp;gt;&amp;lt;jpNdoktype&amp;gt;U&amp;lt;/jpNdoktype&amp;gt;&amp;lt;jpDokdato&amp;gt;2016-04-05&amp;lt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string WebSakBestEduMessagePayload2 {
+            get {
+                return ResourceManager.GetString("WebSakBestEduMessagePayload2", resourceCulture);
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace EduBestServiceStub.Service.Tests
     public class PutMessageHandlerTests
     {
         [TestMethod]
-        public void GetResponseTest_BestEduMessage360Style_ReturnsAppReceitp()
+        public void GetResponseTest_BestEduMessage360Style_ReturnsOkResponse()
         {
             var noarkExchangeClient = Substitute.For<INoarkExchange>();
             var request = CrateMessage();
@@ -26,36 +26,92 @@ namespace EduBestServiceStub.Service.Tests
             noarkExchangeClient.PutMessage(Arg.Any<PutMessageRequestType>())
                 .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
 
-            var putMessageHandler = new PutMessageHandler(request, noarkExchangeClient);
-            var result = putMessageHandler.GetResponse();
+            var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
+            var result = putMessageHandler.GetResponse(request);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result.result.type, AppReceiptTypeType.OK);
-            noarkExchangeClient.Received().PutMessage(Arg.Any<PutMessageRequestType>());
-        }
-
-       
-
-        [TestMethod]
-        public void GetResponseTest_BestEduMessageEphorteStyle_ReturnsAppReceitp()
-        {
-            throw new NotImplementedException();
         }
 
         [TestMethod]
-        public void GetResponseTest_AppReceipt360Style_ReturnEmptyResponse()
+        public void GetResponseTest_BestEduMessage360Style_SendsAppReceitp()
         {
             var noarkExchangeClient = Substitute.For<INoarkExchange>();
             var request = CrateMessage();
-            request.Payload = Resource1.P360AppReceiptPayload;
 
-            var putMessageHandler = new PutMessageHandler(request, noarkExchangeClient);
-            var result = putMessageHandler.GetResponse();
+            request.Payload = Resource1.P360BestEduMessagePayload;
 
+            noarkExchangeClient.PutMessage(Arg.Any<PutMessageRequestType>())
+                .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
+
+            var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
+            var result = putMessageHandler.GetResponse(request);
+            
+            noarkExchangeClient.Received().PutMessage(Arg.Any<PutMessageRequestType>());
+        }
+
+       [TestMethod]
+        public void GetResponseTest_BestEduMessageEphorteStyle_ReturnsOkResponse()
+        {
+            var noarkExchangeClient = Substitute.For<INoarkExchange>();
+            var request = CrateMessage();
+
+            request.Payload = Resource1.EphorteBestEduMessagePayload;
+
+            noarkExchangeClient.PutMessage(Arg.Any<PutMessageRequestType>())
+                .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
+
+            var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
+            var result = putMessageHandler.GetResponse(request);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.result.type, AppReceiptTypeType.OK);
+        }
+        
+        [TestMethod]
+        public void GetResponseTest_MessageWithoutPayload_ReturnEmptyResponse()
+        {
+            var noarkExchangeClient = Substitute.For<INoarkExchange>();
+            var request = CrateMessage();
+
+            var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
+            var result = putMessageHandler.GetResponse(request);
             
             Assert.IsNotNull(result);
-            Assert.IsNull(result.result);
-            noarkExchangeClient.DidNotReceive().PutMessage(Arg.Any<PutMessageRequestType>());
+            Assert.AreEqual(result.result.type, AppReceiptTypeType.ERROR);
+        }
+
+        [TestMethod]
+        public void GetResponseTest_BestEduMessageWebSakStyle_ReturnsOkResponse()
+        {
+            var noarkExchangeClient = Substitute.For<INoarkExchange>();
+            var request = CrateMessage();
+            request.Payload = Resource1.WebSakBestEduMessagePayload2;
+
+            noarkExchangeClient.PutMessage(Arg.Any<PutMessageRequestType>())
+                .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
+
+            var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
+            var result = putMessageHandler.GetResponse(request);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.result.type, AppReceiptTypeType.OK);
+        }
+
+        [TestMethod]
+        public void GetResponseTest_BestEduMessageWebSakStyle_SendsAppReceipt()
+        {
+            var noarkExchangeClient = Substitute.For<INoarkExchange>();
+            var request = CrateMessage();
+            request.Payload = Resource1.WebSakBestEduMessagePayload2;
+
+            noarkExchangeClient.PutMessage(Arg.Any<PutMessageRequestType>())
+                .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
+
+            var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
+            var result = putMessageHandler.GetResponse(request);
+
+            noarkExchangeClient.Received().PutMessage(Arg.Any<PutMessageRequestType>());
         }
 
         [TestMethod]
@@ -63,26 +119,44 @@ namespace EduBestServiceStub.Service.Tests
         {
             var noarkExchangeClient = Substitute.For<INoarkExchange>();
             var request = CrateMessage();
-            request.Payload = Resource1.P360AppReceiptPayload;
+            request.Payload = Resource1.WebSakAppReceipt;
 
-            var putMessageHandler = new PutMessageHandler(request, noarkExchangeClient);
-            var result = putMessageHandler.GetResponse();
+            noarkExchangeClient.PutMessage(Arg.Any<PutMessageRequestType>())
+                .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
+
+            var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
+            var result = putMessageHandler.GetResponse(request);
 
             Assert.IsNotNull(result);
             Assert.IsNull(result.result);
-            noarkExchangeClient.DidNotReceive().PutMessage(Arg.Any<PutMessageRequestType>());
         }
 
         [TestMethod]
         public void GetResponseTest_EmptyPayload_ReturnsErrorResponse()
         {
-            throw new NotImplementedException();
+            var noarkExchangeClient = Substitute.For<INoarkExchange>();
+            var request = CrateMessage();
+            request.Payload = null;
+
+            var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
+            var result = putMessageHandler.GetResponse(request);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.result.type, AppReceiptTypeType.ERROR);
         }
 
         [TestMethod]
         public void GetResponseTest_UnknownPayload_ReturnErrorResponse()
         {
-            throw new NotImplementedException();
+            var noarkExchangeClient = Substitute.For<INoarkExchange>();
+            var request = CrateMessage();
+            request.Payload = "Something";
+
+            var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
+            var result = putMessageHandler.GetResponse(request);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.result.type, AppReceiptTypeType.ERROR);
         }
 
         private PutMessageRequestType CrateMessage()

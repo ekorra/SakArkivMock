@@ -61,7 +61,7 @@ namespace EduBestServiceStub.Service
         {
             log.Info(PutMessageRequest.DumpToString());
             var noarkExchangeClient = new noarkExchange { Url = Resource.IntegrasjonspunktUrl };
-            return new PutMessageHandler(PutMessageRequest, noarkExchangeClient).GetResponse();
+            return new PutMessageHandler(noarkExchangeClient).GetResponse(PutMessageRequest);
         }
 
     }

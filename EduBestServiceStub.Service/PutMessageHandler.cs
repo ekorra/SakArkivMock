@@ -13,36 +13,64 @@ namespace EduBestServiceStub.Service
 {
     public class PutMessageHandler
     {
-        private readonly PutMessageRequestType putMessageRequest;
         private readonly INoarkExchange noarkExchangeClient;
 
-        public PutMessageHandler(PutMessageRequestType putMessageRequest, INoarkExchange noarkExchangeClient)
+        public PutMessageHandler(INoarkExchange noarkExchangeClient)
         {
-            this.putMessageRequest = putMessageRequest;
             this.noarkExchangeClient = noarkExchangeClient;
         }
 
-        public PutMessageResponseType GetResponse()
+        public PutMessageResponseType GetResponse(PutMessageRequestType putMessageRequest)
         {
             if (string.IsNullOrEmpty(putMessageRequest.Payload))
             {
                 return GetErrorResponse("Payload missing");
             }
+            
+            var doc = GetXmlPayload(putMessageRequest);
 
-            var decoded = HttpUtility.HtmlDecode(putMessageRequest.Payload);
-            var doc = XDocument.Parse(decoded);
+            if (doc == null)
+            {
+                return GetErrorResponse("Something wrong with the payload");
+            }
 
             var messageType = GetMessageType(doc);
 
             if (messageType == MessageType.BestEduMessage)
             {
-                var sendAppReceiptResult = SendAppReceipt(doc);
+                var sendAppReceiptResult = SendAppReceipt(doc, putMessageRequest);
                 return sendAppReceiptResult;
             }
             if (messageType == MessageType.AppReceipt)
                 return GetAppReceiptResponse(doc);
 
             return GetErrorResponse("Unknown message");
+        }
+
+        private XDocument GetXmlPayload(PutMessageRequestType putMessageRequest)
+        {
+            string payload;
+            payload = GetPayload(putMessageRequest);
+
+            XDocument doc;
+            try
+            {
+                doc = XDocument.Parse(payload);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return doc;
+        }
+
+        private string GetPayload(PutMessageRequestType putMessageRequest)
+        {
+            var document = XDocument.Load(new StringReader($"<payload>{putMessageRequest.Payload}</payload>"));
+
+            var cdata = document.DescendantNodes().OfType<XCData>().FirstOrDefault();
+            var xmlString = cdata != null ? cdata.Value : HttpUtility.HtmlDecode(putMessageRequest.Payload);
+            return xmlString;
         }
 
         private PutMessageResponseType GetAppReceiptResponse(XDocument doc)
@@ -77,7 +105,7 @@ namespace EduBestServiceStub.Service
 
        
 
-        private PutMessageResponseType SendAppReceipt(XDocument doc)
+        private PutMessageResponseType SendAppReceipt(XDocument doc, PutMessageRequestType putMessageRequest)
         {
             var journalpost = doc.Descendants("journpost").FirstOrDefault();
 
@@ -100,9 +128,8 @@ namespace EduBestServiceStub.Service
             catch (Exception ex)
             {
                 Debug.WriteLine($"AppReceipt feilet: {ex.Message}");
-                throw ex;
+                throw;
             }
-            return GetOkResponse();
         }
 
 
