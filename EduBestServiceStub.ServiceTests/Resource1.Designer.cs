@@ -61,7 +61,7 @@ namespace EduBestServiceStub.ServiceTests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;![CDATA[&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Melding xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&quot;&gt;&lt;journpost xmlns=&quot;&quot;&gt;&lt;jpId&gt;211075&lt;/jpId&gt;&lt;jpJaar&gt;2015&lt;/jpJaar&gt;&lt;jpSeknr&gt;154&lt;/jpSeknr&gt;&lt;jpJpostnr&gt;2&lt;/jpJpostnr&gt;&lt;jpJdato&gt;0001-01-01&lt;/jpJdato&gt;&lt;jpNdoktype&gt;U&lt;/jpNdoktype&gt;&lt;jpDokdato&gt;2015-11-09&lt;/jpDokdato&gt;&lt;jpStatus&gt;R&lt;/jpStatus&gt;&lt;jpInnhold&gt;Dokument 2 test integrasjonspunkt GUR&lt;/jpInnhold&gt;&lt;jpForfdato /&gt;&lt;jpTgkode&gt;U&lt; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Melding xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&quot;&gt;&lt;journpost xmlns=&quot;&quot;&gt;&lt;jpId&gt;211075&lt;/jpId&gt;&lt;jpJaar&gt;2015&lt;/jpJaar&gt;&lt;jpSeknr&gt;154&lt;/jpSeknr&gt;&lt;jpJpostnr&gt;2&lt;/jpJpostnr&gt;&lt;jpJdato&gt;0001-01-01&lt;/jpJdato&gt;&lt;jpNdoktype&gt;U&lt;/jpNdoktype&gt;&lt;jpDokdato&gt;2015-11-09&lt;/jpDokdato&gt;&lt;jpStatus&gt;R&lt;/jpStatus&gt;&lt;jpInnhold&gt;Dokument 2 test integrasjonspunkt GUR&lt;/jpInnhold&gt;&lt;jpForfdato /&gt;&lt;jpTgkode&gt;U&lt;/jpTgkode [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string EphorteBestEduMessagePayload {
             get {
@@ -70,7 +70,7 @@ namespace EduBestServiceStub.ServiceTests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;lt;AppReceipt type=&quot;OK&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.arkivverket.no/Noark/Exchange/types&quot;&amp;gt;&amp;lt;message code=&quot;Recno&quot; xmlns=&quot;&quot;&amp;gt;&amp;lt;text&amp;gt;315635&amp;lt;/text&amp;gt;&amp;lt;/message&amp;gt;&amp;lt;/AppReceipt&amp;gt;.
+        ///   Looks up a localized string similar to &lt;AppReceipt type=&quot;OK&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.arkivverket.no/Noark/Exchange/types&quot;&gt;&lt;message code=&quot;Recno&quot; xmlns=&quot;&quot;&gt;&lt;text&gt;315635&lt;/text&gt;&lt;/message&gt;&lt;/AppReceipt&gt;.
         /// </summary>
         internal static string P360AppReceiptPayload {
             get {
@@ -79,7 +79,7 @@ namespace EduBestServiceStub.ServiceTests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;Melding xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&quot;&amp;gt; &amp;lt;journpost xmlns=&quot;&quot;&amp;gt; &amp;lt;jpId&amp;gt;210707&amp;lt;/jpId&amp;gt; &amp;lt;jpJaar&amp;gt;2015&amp;lt;/jpJaar&amp;gt; &amp;lt;jpSeknr&amp;gt;47&amp;lt;/jpSeknr&amp;gt; &amp;lt;jpJpostnr&amp;gt;7&amp;lt;/jpJpostnr&amp;gt; &amp;lt;jpJdato&amp;gt;0001-01-01&amp;lt;/jpJdato&amp;gt; &amp;lt;jpNdoktype&amp;gt;U&amp;lt;/jpNdoktype&amp;gt; &amp;lt;jpDokdato&amp;gt;2015-09-11&amp;lt;/jpDokdato&amp;gt; &amp;lt;jpS [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Melding xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&quot;&gt; &lt;journpost xmlns=&quot;&quot;&gt; &lt;jpId&gt;210707&lt;/jpId&gt; &lt;jpJaar&gt;2015&lt;/jpJaar&gt; &lt;jpSeknr&gt;47&lt;/jpSeknr&gt; &lt;jpJpostnr&gt;7&lt;/jpJpostnr&gt; &lt;jpJdato&gt;0001-01-01&lt;/jpJdato&gt; &lt;jpNdoktype&gt;U&lt;/jpNdoktype&gt; &lt;jpDokdato&gt;2015-09-11&lt;/jpDokdato&gt; &lt;jpStatus&gt;R&lt;/jpStatus&gt; &lt;jpInnhold&gt;Testdokument 7&lt;/jpInnhold&gt; &lt;jpForfdato /&gt; &lt;jpTgkode&gt;U&lt;/jpTgkode&gt; &lt;jpAgdato  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string P360BestEduMessagePayload {
             get {
@@ -88,7 +88,7 @@ namespace EduBestServiceStub.ServiceTests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;AppReceipt xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; type=&quot;OK&quot; xmlns=&quot;http://www.arkivverket.no/Noark/Exchange/types&quot;&amp;gt;&amp;lt;message code=&quot;Avsender&quot; xmlns=&quot;&quot;&amp;gt;&amp;lt;text&amp;gt;(810076402)&amp;lt;/text&amp;gt;&amp;lt;/message&amp;gt;&amp;lt;message code=&quot;Mottaker&quot; xmlns=&quot;&quot;&amp;gt;&amp;lt;text&amp;gt;(910077473)&amp;lt;/text&amp;gt;&amp;lt;/message&amp;gt;&amp;lt;message code=&quot;AppKvitteringID&quot; xmlns=&quot;&quot;&amp;gt;&amp;lt;text&amp;gt;bd8e6c5c-05e0-48b4-8a42-2cf71a1742b6&amp;lt;/te [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;AppReceipt xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; type=&quot;OK&quot; xmlns=&quot;http://www.arkivverket.no/Noark/Exchange/types&quot;&gt;&lt;message code=&quot;Avsender&quot; xmlns=&quot;&quot;&gt;&lt;text&gt;(810076402)&lt;/text&gt;&lt;/message&gt;&lt;message code=&quot;Mottaker&quot; xmlns=&quot;&quot;&gt;&lt;text&gt;(910077473)&lt;/text&gt;&lt;/message&gt;&lt;message code=&quot;AppKvitteringID&quot; xmlns=&quot;&quot;&gt;&lt;text&gt;bd8e6c5c-05e0-48b4-8a42-2cf71a1742b6&lt;/text&gt;&lt;/message&gt;&lt;message code=&quot;Tidspunkt for mottak&quot; xmlns=&quot;&quot;&gt;&lt;text&gt;06.04.2016 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string WebSakAppReceipt {
             get {
@@ -97,7 +97,7 @@ namespace EduBestServiceStub.ServiceTests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;lt;Melding xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xmlns:xsd=&amp;quot;http://www.w3.org/2001/XMLSchema&amp;quot; xmlns=&amp;quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&amp;quot;&amp;gt;&amp;lt;journpost xmlns=&amp;quot;&amp;quot;&amp;gt;&amp;lt;jpId&amp;gt;2013002997&amp;lt;/jpId&amp;gt;&amp;lt;jpJaar&amp;gt;2013&amp;lt;/jpJaar&amp;gt;&amp;lt;jpSeknr&amp;gt;2997&amp;lt;/jpSeknr&amp;gt;&amp;lt;jpJdato&amp;gt;2016-04-05&amp;lt;/jpJdato&amp;gt;&amp;lt;jpNdoktype&amp;gt;U&amp;lt;/jpNdoktype&amp;gt;&amp;lt;jpDokdato&amp;gt;2016-04-05&amp;lt; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Melding xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&quot;&gt;&lt;journpost xmlns=&quot;&quot;&gt;&lt;jpId&gt;2013002997&lt;/jpId&gt;&lt;jpJaar&gt;2013&lt;/jpJaar&gt;&lt;jpSeknr&gt;2997&lt;/jpSeknr&gt;&lt;jpJdato&gt;2016-04-05&lt;/jpJdato&gt;&lt;jpNdoktype&gt;U&lt;/jpNdoktype&gt;&lt;jpDokdato&gt;2016-04-05&lt;/jpDokdato&gt;&lt;jpStatus&gt;E&lt;/jpStatus&gt;&lt;jpInnhold&gt;Til BEST&lt;/jpInnhold&gt;&lt;jpU1&gt;0&lt;/jpU1&gt;&lt;jpForfdato /&gt;&lt;jpTgkode /&gt;&lt;jpUoff /&gt;&lt;jpAgdato /&gt;&lt;jpAgkode /&gt;&lt;jpAntved [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string WebSakBestEduMessagePayload {
             get {
@@ -106,11 +106,20 @@ namespace EduBestServiceStub.ServiceTests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;lt;Melding xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xmlns:xsd=&amp;quot;http://www.w3.org/2001/XMLSchema&amp;quot; xmlns=&amp;quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&amp;quot;&amp;gt;&amp;lt;journpost xmlns=&amp;quot;&amp;quot;&amp;gt;&amp;lt;jpId&amp;gt;2013002997&amp;lt;/jpId&amp;gt;&amp;lt;jpJaar&amp;gt;2013&amp;lt;/jpJaar&amp;gt;&amp;lt;jpSeknr&amp;gt;2997&amp;lt;/jpSeknr&amp;gt;&amp;lt;jpJdato&amp;gt;2016-04-05&amp;lt;/jpJdato&amp;gt;&amp;lt;jpNdoktype&amp;gt;U&amp;lt;/jpNdoktype&amp;gt;&amp;lt;jpDokdato&amp;gt;2016-04-05&amp;lt; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Melding xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&quot;&gt;&lt;journpost xmlns=&quot;&quot;&gt;&lt;jpId&gt;2013002997&lt;/jpId&gt;&lt;jpJaar&gt;2013&lt;/jpJaar&gt;&lt;jpSeknr&gt;2997&lt;/jpSeknr&gt;&lt;jpJdato&gt;2016-04-05&lt;/jpJdato&gt;&lt;jpNdoktype&gt;U&lt;/jpNdoktype&gt;&lt;jpDokdato&gt;2016-04-05&lt;/jpDokdato&gt;&lt;jpStatus&gt;E&lt;/jpStatus&gt;&lt;jpInnhold&gt;Til BEST&lt;/jpInnhold&gt;&lt;jpU1&gt;0&lt;/jpU1&gt;&lt;jpForfdato /&gt;&lt;jpTgkode /&gt;&lt;jpUoff /&gt;&lt;jpAgdato /&gt;&lt;jpAgkode /&gt;&lt;jpAntved [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string WebSakBestEduMessagePayload2 {
             get {
                 return ResourceManager.GetString("WebSakBestEduMessagePayload2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;Melding xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.arkivverket.no/Noark4-1-WS-WD/types&quot;&gt;&lt;journpost xmlns=&quot;&quot;&gt;&lt;jpId&gt;2013002997&lt;/jpId&gt;&lt;jpJaar&gt;2013&lt;/jpJaar&gt;&lt;jpSeknr&gt;2997&lt;/jpSeknr&gt;&lt;jpJdato&gt;2016-04-05&lt;/jpJdato&gt;&lt;jpNdoktype&gt;U&lt;/jpNdoktype&gt;&lt;jpDokdato&gt;2016-04-05&lt;/jpDokdato&gt;&lt;jpStatus&gt;E&lt;/jpStatus&gt;&lt;jpInnhold&gt;Til BEST&lt;/jpInnhold&gt;&lt;jpU1&gt;0&lt;/jpU1&gt;&lt;jpForfdato /&gt;&lt;jpTgkode /&gt;&lt;jpUoff /&gt;&lt;jpAgdato /&gt;&lt;jpAgkode /&gt;&lt;jpAntved [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string xml {
+            get {
+                return ResourceManager.GetString("xml", resourceCulture);
             }
         }
     }
