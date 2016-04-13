@@ -24,8 +24,7 @@ namespace EduBestServiceStub.Lib
 
         private void EnsureLogDirectroy()
         {
-            logdir = Directory.GetCurrentDirectory() + @"\RequestLogs";
-            //logdir = WebConfigurationManager.AppSettings["RequestLogPath"];
+            logdir = WebConfigurationManager.AppSettings["RequestLogPath"];
 
             if (!Directory.Exists(logdir))
             {

@@ -46,10 +46,10 @@ namespace EduBestServiceStub.Service
             var receiver = putMessageRequest.envelope.receiver.orgnr;
             var sender = putMessageRequest.envelope.sender.orgnr;
             var conversationId = putMessageRequest.envelope.conversationId;
-            var journalpost = doc.Descendants("journpost").FirstOrDefault();
+            var jpId = doc.Descendants().FirstOrDefault(n => n.Name == "jpId")?.Value;
 
 
-            log.Info($"Mottatt melding fra: {sender}, til: {receiver} conversationId: {conversationId} journalpostId: {journalpost}");
+            log.Info($"Mottatt melding fra: {sender}, til: {receiver} conversationId: {conversationId} journalpostId: {jpId}");
 
 
             if (messageType == MessageType.BestEduMessage)
