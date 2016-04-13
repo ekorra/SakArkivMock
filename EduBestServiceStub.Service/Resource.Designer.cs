@@ -77,5 +77,23 @@ namespace EduBestServiceStub.Service {
                 return ResourceManager.GetString("Organisasjonsnummer", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payload missing.
+        /// </summary>
+        internal static string Payload_missing {
+            get {
+                return ResourceManager.GetString("Payload_missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something wrong with the payload.
+        /// </summary>
+        internal static string Unknown_payload {
+            get {
+                return ResourceManager.GetString("Unknown_payload", resourceCulture);
+            }
+        }
     }
 }

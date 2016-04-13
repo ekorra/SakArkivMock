@@ -27,7 +27,7 @@ namespace EduBestServiceStub.Service.Tests
                 .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
 
             var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
-            var result = putMessageHandler.GetResponse(request);
+            var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result.result.type, AppReceiptTypeType.OK);
@@ -45,7 +45,7 @@ namespace EduBestServiceStub.Service.Tests
                 .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
 
             var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
-            var result = putMessageHandler.GetResponse(request);
+            var result = putMessageHandler.HandleRequest(request);
             
             noarkExchangeClient.Received().PutMessage(Arg.Any<PutMessageRequestType>());
         }
@@ -62,7 +62,7 @@ namespace EduBestServiceStub.Service.Tests
                 .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
 
             var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
-            var result = putMessageHandler.GetResponse(request);
+            var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result.result.type, AppReceiptTypeType.OK);
@@ -75,7 +75,7 @@ namespace EduBestServiceStub.Service.Tests
             var request = CrateMessage();
 
             var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
-            var result = putMessageHandler.GetResponse(request);
+            var result = putMessageHandler.HandleRequest(request);
             
             Assert.IsNotNull(result);
             Assert.AreEqual(result.result.type, AppReceiptTypeType.ERROR);
@@ -92,7 +92,7 @@ namespace EduBestServiceStub.Service.Tests
                 .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
 
             var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
-            var result = putMessageHandler.GetResponse(request);
+            var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result.result.type, AppReceiptTypeType.OK);
@@ -109,7 +109,7 @@ namespace EduBestServiceStub.Service.Tests
                 .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
 
             var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
-            var result = putMessageHandler.GetResponse(request);
+            var result = putMessageHandler.HandleRequest(request);
 
             noarkExchangeClient.Received().PutMessage(Arg.Any<PutMessageRequestType>());
         }
@@ -125,7 +125,7 @@ namespace EduBestServiceStub.Service.Tests
                 .Returns(new PutMessageResponseType { result = new AppReceiptType { type = AppReceiptTypeType.OK } });
 
             var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
-            var result = putMessageHandler.GetResponse(request);
+            var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
             Assert.IsNull(result.result);
@@ -139,7 +139,7 @@ namespace EduBestServiceStub.Service.Tests
             request.Payload = null;
 
             var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
-            var result = putMessageHandler.GetResponse(request);
+            var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result.result.type, AppReceiptTypeType.ERROR);
@@ -153,7 +153,7 @@ namespace EduBestServiceStub.Service.Tests
             request.Payload = "Something";
 
             var putMessageHandler = new PutMessageHandler(noarkExchangeClient);
-            var result = putMessageHandler.GetResponse(request);
+            var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result.result.type, AppReceiptTypeType.ERROR);

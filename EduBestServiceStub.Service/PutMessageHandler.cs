@@ -10,33 +10,47 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using EduBestServiceStub.Lib.NoarkTypes;
+using log4net;
 
 namespace EduBestServiceStub.Service
 {
     public class PutMessageHandler
     {
         private readonly INoarkExchange noarkExchangeClient;
+        private ILog log;
 
         public PutMessageHandler(INoarkExchange noarkExchangeClient)
         {
+            log = LogManager.GetLogger(typeof(NoarkExchange));
             this.noarkExchangeClient = noarkExchangeClient;
         }
 
-        public PutMessageResponseType GetResponse(PutMessageRequestType putMessageRequest)
+        public PutMessageResponseType HandleRequest(PutMessageRequestType putMessageRequest)
         {
             if (string.IsNullOrEmpty(putMessageRequest.Payload))
             {
-                return GetErrorResponse("Payload missing");
+                log.Error(Resource.Payload_missing);
+                return GetErrorResponse(Resource.Payload_missing);
             }
             
             var doc = GetXmlPayload(putMessageRequest);
 
             if (doc == null)
             {
-                return GetErrorResponse("Something wrong with the payload");
+                log.Error(Resource.Unknown_payload);
+                return GetErrorResponse(Resource.Unknown_payload);
             }
 
             var messageType = GetMessageType(doc);
+
+            var receiver = putMessageRequest.envelope.receiver.orgnr;
+            var sender = putMessageRequest.envelope.sender.orgnr;
+            var conversationId = putMessageRequest.envelope.conversationId;
+            var journalpost = doc.Descendants("journpost").FirstOrDefault();
+
+
+            log.Info($"Mottatt melding fra: {sender}, til: {receiver} conversationId: {conversationId} journalpostId: {journalpost}");
+
 
             if (messageType == MessageType.BestEduMessage)
             {
@@ -44,7 +58,10 @@ namespace EduBestServiceStub.Service
                 try
                 {
                     var id = new Random().Next(999999).ToString();
-                    sendAppReceiptResult = SendAppReceipt(doc, putMessageRequest, id);
+                    log.Info($"Created archiveId: {id}");
+                    sendAppReceiptResult = SendAppReceipt(sender, receiver, conversationId, id);
+
+
                     if (sendAppReceiptResult.result.type == AppReceiptTypeType.OK)
                     {
                         var response = GetOkResponse(id);
@@ -54,6 +71,7 @@ namespace EduBestServiceStub.Service
                 catch (WebException e)
                 {
                     var message = e.InnerException?.Message ?? e.Message;
+                    log.Error(e.Message, e);
                     sendAppReceiptResult = GetErrorResponse(message);
                 }
                 return sendAppReceiptResult;
@@ -92,13 +110,16 @@ namespace EduBestServiceStub.Service
 
                 if (rootName == "Melding")
                 {
+                    log.Info("Messgetype: BestEduMessage");
                     return MessageType.BestEduMessage;
                 }
                 if (rootName == "AppReceipt")
                 {
+                    log.Info("MessageType: AppReceipt");
                     return MessageType.AppReceipt;
                 }
             }
+            log.Warn("MessageType: Unknown");
             return MessageType.Unknown;
         }
 
@@ -111,37 +132,16 @@ namespace EduBestServiceStub.Service
 
        
 
-        private PutMessageResponseType SendAppReceipt(XDocument doc, PutMessageRequestType putMessageRequest, string id)
+        private PutMessageResponseType SendAppReceipt(string sender, string receiver, string conversationId, string id)
         {
-            var journalpost = doc.Descendants("journpost").FirstOrDefault();
-
-            var messageCreator = new MessageCreator(Resource.Organisasjonsnummer, noarkExchangeClient);
-
-            var receiver = putMessageRequest.envelope.receiver.orgnr;
-            var sender = putMessageRequest.envelope.sender.orgnr;
-            var conversationId = putMessageRequest.envelope.conversationId;
+            var messageCreator = new MessageCreator(noarkExchangeClient);
             
-
-            Debug.WriteLine($"Mottatt melding fra: {sender}, til: {receiver} conversationId: {conversationId} journalpostId: {journalpost}");
-
-            try
-            {
-                var appReceipt = messageCreator.GetAppReceipt(sender, receiver, conversationId, id);
-                Debug.WriteLine("Sending AppReceipt");
-                var result = noarkExchangeClient.PutMessage(appReceipt);
+            var appReceipt = messageCreator.GetAppReceipt(sender, receiver, conversationId, id);
+            Debug.WriteLine("Sending AppReceipt");
+            var result = noarkExchangeClient.PutMessage(appReceipt);
                 
-                return result;
-            }
-            catch (WebException ex)
-            {
-                Debug.WriteLine(ex.InnerException.Message);
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"AppReceipt feilet: {ex.Message}");
-                throw;
-            }
+            log.Info("AppReciept sendt");
+            return result;
         }
         
         private PutMessageResponseType GetOkResponse(string id)

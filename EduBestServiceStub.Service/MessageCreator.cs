@@ -12,12 +12,11 @@ namespace EduBestServiceStub.Service
 {
     public class MessageCreator
     {
-        private readonly string sernderOrgNr;
+        
         private INoarkExchange noarkExchangeClient;
 
-        public MessageCreator(string sernderOrgNr, INoarkExchange noarkExchangeClient)
+        public MessageCreator(INoarkExchange noarkExchangeClient)
         {
-            this.sernderOrgNr = sernderOrgNr;
             this.noarkExchangeClient = noarkExchangeClient;
         }
 
@@ -60,11 +59,6 @@ namespace EduBestServiceStub.Service
             return result.result.type == AppReceiptTypeType.OK;
         }
 
-        private static string GetDateString()
-        {
-            return DateTime.Now.ToString("yyyy-MM-dd");
-        }
-
         public PutMessageRequestType GetAppReceipt(string sender, string receiver, string conversationId, string id)
         {
             var message = new PutMessageRequestType();
@@ -100,17 +94,6 @@ namespace EduBestServiceStub.Service
                 receiver = new AddressType {orgnr = receiver}
             };
             return envelope;
-        }
-
-        private string GetString<T>(XmlDocument obj)
-        {
-            //new XmlTextWriter()
-            //var tx = new XmlTextWriter (new StringWriter());
-            //obj.WriteTo(tx);
-
-            //var str = HttpUtility.HtmlEncode(tx);
-            //return str;
-            return "&lt;AppReceipt type=\"OK\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.arkivverket.no/Noark/Exchange/types\"&gt;& lt; message code =\"ID\" xmlns=\"\"&gt;& lt; text & gt; 210725 & lt;/ text & gt;&lt;/ message & gt;&lt;/ AppReceipt & gt;";
         }
     }
 }

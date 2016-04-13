@@ -42,10 +42,19 @@ namespace EduBestServiceStub.Service
             XmlConfigurator.Configure();
             log = LogManager.GetLogger(typeof(NoarkExchange));
             logRequest = bool.Parse(WebConfigurationManager.AppSettings["LogRequest"]);
+            log.Info($"LogRequests : {logRequest}");
 
             if (logRequest)
             {
-                requestLogger = new RequestLogger();
+                try
+                {
+                    requestLogger = new RequestLogger();
+                }
+                catch (Exception e)
+                {
+                    log.Error("Failed to initiate requestlogger", e);
+                }
+                
             }
             
         }
@@ -70,9 +79,12 @@ namespace EduBestServiceStub.Service
         public PutMessageResponseType PutMessage(
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.arkivverket.no/Noark/Exchange/types")] PutMessageRequestType PutMessageRequest)
         {
+            log.Info("Got request");
             requestLogger?.Log(PutMessageRequest);
             var noarkExchangeClient = new noarkExchange { Url = Resource.IntegrasjonspunktUrl };
-            return new PutMessageHandler(noarkExchangeClient).GetResponse(PutMessageRequest);
+            var result = new PutMessageHandler(noarkExchangeClient).HandleRequest(PutMessageRequest);
+            log.Info("returning respone");
+            return result;
         }
 
     }

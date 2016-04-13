@@ -12,7 +12,7 @@ namespace EduBestServiceStub.Console
             const string senderOrgNr = "910075918";
             System.Console.WriteLine("Started");
             var noarkExchangeClient = new noarkExchange {Url = ""};
-            MessageCreator messageCreator = new MessageCreator(senderOrgNr, noarkExchangeClient);
+            MessageCreator messageCreator = new MessageCreator(noarkExchangeClient);
 
             bool canSend = false;
             string receiverOrgnr = string.Empty;

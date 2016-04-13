@@ -123,4 +123,10 @@
   <data name="Organisasjonsnummer" xml:space="preserve">
     <value>810076402</value>
   </data>
+  <data name="Payload_missing" xml:space="preserve">
+    <value>Payload missing</value>
+  </data>
+  <data name="Unknown_payload" xml:space="preserve">
+    <value>Something wrong with the payload</value>
+  </data>
 </root>
