@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.Service"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.Console", "BestEduServiceStub.Console\EduBestServiceStub.Console.csproj", "{9EB4C521-25D1-4BE4-9294-2BE4B202E207}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.ServiceTests", "EduBestServiceStub.ServiceTests\EduBestServiceStub.ServiceTests.csproj", "{67AFA444-8AA7-4929-B2F3-E88175A14EBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9EB4C521-25D1-4BE4-9294-2BE4B202E207}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EB4C521-25D1-4BE4-9294-2BE4B202E207}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EB4C521-25D1-4BE4-9294-2BE4B202E207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67AFA444-8AA7-4929-B2F3-E88175A14EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67AFA444-8AA7-4929-B2F3-E88175A14EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67AFA444-8AA7-4929-B2F3-E88175A14EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67AFA444-8AA7-4929-B2F3-E88175A14EBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

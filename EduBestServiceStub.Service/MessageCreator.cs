@@ -12,12 +12,12 @@ namespace EduBestServiceStub.Service
     public class MessageCreator
     {
         private readonly string sernderOrgNr;
-        private noarkExchange noarkExchange;
+        private INoarkExchange noarkExchangeClient;
 
-        public MessageCreator(string sernderOrgNr, string endpointUrl)
+        public MessageCreator(string sernderOrgNr, INoarkExchange noarkExchangeClient)
         {
             this.sernderOrgNr = sernderOrgNr;
-            noarkExchange = new noarkExchange {Url = endpointUrl};
+            this.noarkExchangeClient = noarkExchangeClient;
         }
 
         public bool CanSend(string receiverOrgnr)
@@ -30,7 +30,7 @@ namespace EduBestServiceStub.Service
                 {
                     orgnr = receiverOrgnr,
                 };
-                result = noarkExchange.GetCanReceiveMessage(message).result;
+                result = noarkExchangeClient.GetCanReceiveMessage(message).result;
                 Debug.WriteLine($"result {result}", result);
             }
             catch (Exception e)
@@ -49,9 +49,9 @@ namespace EduBestServiceStub.Service
 
             try
             {
-                result = noarkExchange.PutMessage(request);
+                result = noarkExchangeClient.PutMessage(request);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -64,7 +64,7 @@ namespace EduBestServiceStub.Service
             return DateTime.Now.ToString("yyyy-MM-dd");
         }
 
-        public bool SendAppReceipt(string sender, string receiver, string conversationId)
+        public PutMessageRequestType GetAppReceipt(string sender, string receiver, string conversationId)
         {
             var message = new PutMessageRequestType();
             message.envelope = GetEnvelope(receiver, sender, conversationId);
@@ -72,10 +72,7 @@ namespace EduBestServiceStub.Service
             var xmlString = GetString(appReceipt);
             message.Payload = HttpUtility.HtmlEncode(xmlString);
 
-            Debug.WriteLine("Sending AppReceipt");
-            var result =  noarkExchange.PutMessage(message);
-
-            return result.result.type == AppReceiptTypeType.OK;
+            return message;
         }
 
         private AppReceiptType GetOkAppReceipt()

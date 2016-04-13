@@ -60,7 +60,8 @@ namespace EduBestServiceStub.Service
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.arkivverket.no/Noark/Exchange/types")] PutMessageRequestType PutMessageRequest)
         {
             log.Info(PutMessageRequest.DumpToString());
-            return new PutMessageHandler(PutMessageRequest).GetResponse();
+            var noarkExchangeClient = new noarkExchange { Url = Resource.IntegrasjonspunktUrl };
+            return new PutMessageHandler(noarkExchangeClient).GetResponse(PutMessageRequest);
         }
 
     }
