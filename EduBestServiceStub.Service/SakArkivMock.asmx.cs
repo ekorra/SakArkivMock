@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using EduBestServiceStub.Lib;
@@ -32,11 +34,20 @@ namespace EduBestServiceStub.Service
     public class NoarkExchange : WebService
     {
         private ILog log;
+        private readonly IRequestLogger requestLogger;
+        private readonly bool logRequest;
 
         public NoarkExchange()
         {
             XmlConfigurator.Configure();
             log = LogManager.GetLogger(typeof(NoarkExchange));
+            logRequest = bool.Parse(WebConfigurationManager.AppSettings["LogRequest"]);
+
+            if (logRequest)
+            {
+                requestLogger = new RequestLogger();
+            }
+            
         }
 
         /// <remarks/>
@@ -59,7 +70,7 @@ namespace EduBestServiceStub.Service
         public PutMessageResponseType PutMessage(
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.arkivverket.no/Noark/Exchange/types")] PutMessageRequestType PutMessageRequest)
         {
-            log.Info(PutMessageRequest.DumpToString());
+            requestLogger?.Log(PutMessageRequest);
             var noarkExchangeClient = new noarkExchange { Url = Resource.IntegrasjonspunktUrl };
             return new PutMessageHandler(noarkExchangeClient).GetResponse(PutMessageRequest);
         }

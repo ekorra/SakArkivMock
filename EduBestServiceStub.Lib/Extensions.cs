@@ -24,6 +24,11 @@ namespace EduBestServiceStub.Lib
             stream.Position = 0;
             return stream;
         }
+
+        public static string GetTimestamp(this DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssffff");
+        }
     }
 
     public static class XmlHelper
