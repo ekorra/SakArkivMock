@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Web;
-using System.Web.UI.WebControls;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
+using EduBestServiceStub.Lib;
 using EduBestServiceStub.Lib.NoarkTypes;
 using log4net;
+using MessageType = EduBestServiceStub.Lib.MessageType;
 
 namespace EduBestServiceStub.Service
 {
@@ -27,40 +24,23 @@ namespace EduBestServiceStub.Service
 
         public PutMessageResponseType HandleRequest(PutMessageRequestType putMessageRequest)
         {
-            if (string.IsNullOrEmpty(putMessageRequest.Payload))
+            var eduMessage = new EduMessage(putMessageRequest);
+            if (eduMessage.IsValid)
             {
-                log.Error(Resource.Payload_missing);
-                return GetErrorResponse(Resource.Payload_missing);
-            }
-            
-            var doc = GetXmlPayload(putMessageRequest);
-
-            if (doc == null)
-            {
-                log.Error(Resource.Unknown_payload);
-                return GetErrorResponse(Resource.Unknown_payload);
+                return GetErrorResponse(eduMessage.ErrorList);
             }
 
-            var messageType = GetMessageType(doc);
-
-            var receiver = putMessageRequest.envelope.receiver.orgnr;
-            var sender = putMessageRequest.envelope.sender.orgnr;
-            var conversationId = putMessageRequest.envelope.conversationId;
-            var jpId = doc.Descendants().FirstOrDefault(n => n.Name == "jpId")?.Value;
+            log.Info($"Mottatt melding fra: {eduMessage.Sender}, til: {eduMessage.Receiver} conversationId: {eduMessage.ConverstationId} journalpostId: {eduMessage.JpId}");
 
 
-            log.Info($"Mottatt melding fra: {sender}, til: {receiver} conversationId: {conversationId} journalpostId: {jpId}");
-
-
-            if (messageType == MessageType.BestEduMessage)
+            if (eduMessage.Type == MessageType.BestEduMessage)
             {
                 PutMessageResponseType sendAppReceiptResult;
                 try
                 {
                     var id = new Random().Next(999999).ToString();
                     log.Info($"Created archiveId: {id}");
-                    sendAppReceiptResult = SendAppReceipt(sender, receiver, conversationId, id);
-
+                    sendAppReceiptResult = SendAppReceipt(eduMessage.Sender, eduMessage.Receiver, eduMessage.ConverstationId, id);
 
                     if (sendAppReceiptResult.result.type == AppReceiptTypeType.OK)
                     {
@@ -72,66 +52,23 @@ namespace EduBestServiceStub.Service
                 {
                     var message = e.InnerException?.Message ?? e.Message;
                     log.Error(e.Message, e);
-                    sendAppReceiptResult = GetErrorResponse(message);
+                    sendAppReceiptResult = GetErrorResponse(new Dictionary<string, string> { {"3",message} });
                 }
                 return sendAppReceiptResult;
             }
-            if (messageType == MessageType.AppReceipt)
-                return GetAppReceiptResponse(doc);
+            if (eduMessage.Type == MessageType.AppReceipt)
+            {
+                return GetAppReceiptResponse();
+            }
 
-            return GetErrorResponse("Unknown message");
+            return GetErrorResponse(new Dictionary<string, string> { { "3", "Unknown Error" } });
         }
 
-        private XDocument GetXmlPayload(PutMessageRequestType putMessageRequest)
-        {
-            XDocument doc;
-            try
-            {
-                doc = XDocument.Parse(putMessageRequest.Payload);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            return doc;
-        }
-        
-
-        private PutMessageResponseType GetAppReceiptResponse(XDocument doc)
+        private PutMessageResponseType GetAppReceiptResponse()
         {
             return new PutMessageResponseType();
         }
-
-        private MessageType GetMessageType(XDocument doc)
-        {
-            if (doc.Root != null)
-            {
-                var rootName = doc.Root.Name.LocalName;
-
-                if (rootName == "Melding")
-                {
-                    log.Info("Messgetype: BestEduMessage");
-                    return MessageType.BestEduMessage;
-                }
-                if (rootName == "AppReceipt")
-                {
-                    log.Info("MessageType: AppReceipt");
-                    return MessageType.AppReceipt;
-                }
-            }
-            log.Warn("MessageType: Unknown");
-            return MessageType.Unknown;
-        }
-
-        private enum MessageType
-        {
-            Unknown,
-            AppReceipt,
-            BestEduMessage
-        }
-
-       
-
+        
         private PutMessageResponseType SendAppReceipt(string sender, string receiver, string conversationId, string id)
         {
             var messageCreator = new MessageCreator(noarkExchangeClient);
@@ -157,13 +94,14 @@ namespace EduBestServiceStub.Service
             return response;
         }
 
-        private PutMessageResponseType GetErrorResponse(string errormessage)
+        
+        private PutMessageResponseType GetErrorResponse(Dictionary<string, string> errormessages)
         {
             var response = new PutMessageResponseType
             {
                 result = new AppReceiptType
                 {
-                    message = GetStatuMessage("ERROR", errormessage),
+                    message = GetStatuMessages(errormessages),
                     type = AppReceiptTypeType.ERROR
                 }
             };
@@ -174,26 +112,22 @@ namespace EduBestServiceStub.Service
         {
             return new[]
             {
-                new StatusMessageType
-                {
-                    code = code,
-                    text = text
-                }
-            };
+                        new StatusMessageType
+                        {
+                            code = code,
+                            text = text
+                        }
+                    };
+        }
+
+        private StatusMessageType[] GetStatuMessages(Dictionary<string, string> errormessages)
+        {
+            return errormessages.Select(message => new StatusMessageType {code = message.Key, text = message.Value}).ToArray();
         }
 
         private XElement GetElement(XDocument doc, string elementName)
         {
-            foreach (XNode node in doc.DescendantNodes())
-            {
-                if (node is XElement)
-                {
-                    XElement element = (XElement)node;
-                    if (element.Name.LocalName.Equals(elementName))
-                        return element;
-                }
-            }
-            return null;
+            return doc.DescendantNodes().OfType<XElement>().FirstOrDefault(element => element.Name.LocalName.Equals(elementName));
         }
     }
 }
