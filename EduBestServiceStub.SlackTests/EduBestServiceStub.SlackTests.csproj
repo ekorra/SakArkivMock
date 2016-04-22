@@ -36,6 +36,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Slack.Webhooks, Version=0.1.6.15378, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Slack.Webhooks.0.1.6\lib\net40\Slack.Webhooks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -61,6 +77,11 @@
     <Compile Include="SlackHookTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EduBestServiceStub.Lib\EduBestServiceStub.Lib.csproj">
+      <Project>{5493cc3a-bf7f-486f-b209-3c623d85a70b}</Project>
+      <Name>EduBestServiceStub.Lib</Name>
+      <SpecificVersion>true</SpecificVersion>
+    </ProjectReference>
     <ProjectReference Include="..\EduBestServiceStub.Slack\EduBestServiceStub.Slack.csproj">
       <Project>{D930E059-0F72-4A64-AB32-C2973F6FB800}</Project>
       <Name>EduBestServiceStub.Slack</Name>
@@ -72,6 +93,9 @@
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

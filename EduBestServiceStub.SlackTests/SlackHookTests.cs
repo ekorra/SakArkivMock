@@ -6,7 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using EduBestServiceStub.Lib;
 using EduBestServiceStub.SlackTests;
+using NSubstitute;
+using Slack.Webhooks;
 
 namespace EduBestServiceStub.Slack.Tests
 {
@@ -16,11 +19,18 @@ namespace EduBestServiceStub.Slack.Tests
         [TestMethod()]
         public void PublishMessageTest()
         {
-           SlackHook slackHook = new SlackHook();
+            var slackHook = new SlackHook();
 
-           var payload = XDocument.Parse(Resource.PayloadXml);
-            
-           //slackHook.PublishMessage();
+            var message = new EduMessage
+            {
+                Sender = "Sender",
+                Receiver = "Receiver",
+                ConverstationId = "ConversationId",
+                JpId = "JpId",
+                JpTitle = "JpTitle"
+            };
+
+            slackHook.PublishMessage(message);
         }
     }
 }

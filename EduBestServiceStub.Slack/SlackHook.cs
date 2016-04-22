@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -14,57 +15,51 @@ namespace EduBestServiceStub.Slack
             "https://hooks.slack.com/services/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";
 
         private SlackClient slackClient;
+        private bool useShortMessages;
 
         public SlackHook()
         {
             slackClient = new SlackClient(SlackUrl);
+            useShortMessages = false;
         }
 
-        public void PublishMessage()
+        public void PublishMessage(Lib.EduMessage eduMessage)
         {
             var slackMessage = new SlackMessage
             {
                 Channel = "#sakarkivmock",
-                Text = "God damn I'm good",
+                Text = $"Melding fra {eduMessage.Sender}",
                 IconEmoji = Emoji.Muscle,
-                Username = "espenssakarkiv"
+                Username = "sakarkmock"
             };
 
             
             var slackAttachment = new SlackAttachment
             {
-                Fallback = "New open task [Urgent]: <http://url_to_task|Test out Slack message attachments>",
-                Text = "New open task *[Urgent]*: <http://url_to_task|Test out Slack message attachments>",
-                Color = "#D00000",
+                Text = $"Tittel: {eduMessage.JpTitle}",
+                Color = "#D3D3D3",
                 Fields =
             new List<SlackField>
                 {
                     new SlackField
                         {
-                            Title = "Notes",
-                            Value = "This is much *easier* than I thought it would be."
+                            Title = "Fra",
+                            Value = eduMessage.Sender,
+                            Short = useShortMessages
                         },
                     new SlackField
                         {
-                            Title = "Short2Title",
-                            Value = "Short2value",
-                            Short = true
+                            Title = "Til",
+                            Value = eduMessage.Receiver,
+                            Short = useShortMessages
                         },
                     new SlackField
                         {
-                            Title = "Short3Title",
-                            Value = "Short3value",
-                            Short = true
-                        },
-                    new SlackField
-                        {
-                            Title = "Short4Title",
-                            Value = "Short4value",
-                            Short = true
+                            Title = "Journlpostnummer",
+                            Value = eduMessage.JpId,
+                            Short = useShortMessages
                         }
-
                 }
-            
             };
             slackMessage.Attachments = new List<SlackAttachment> { slackAttachment };
 
