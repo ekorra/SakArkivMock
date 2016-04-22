@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PayloadXml" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;Melding xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.arkivverket.no/Noark4-1-WS-WD/types"&gt; &lt;journpost xmlns=""&gt; &lt;jpId&gt;210707&lt;/jpId&gt; &lt;jpJaar&gt;2015&lt;/jpJaar&gt; &lt;jpSeknr&gt;47&lt;/jpSeknr&gt; &lt;jpJpostnr&gt;7&lt;/jpJpostnr&gt; &lt;jpJdato&gt;0001-01-01&lt;/jpJdato&gt; &lt;jpNdoktype&gt;U&lt;/jpNdoktype&gt; &lt;jpDokdato&gt;2015-09-11&lt;/jpDokdato&gt; &lt;jpStatus&gt;R&lt;/jpStatus&gt; &lt;jpInnhold&gt;Testdokument 7&lt;/jpInnhold&gt; &lt;jpForfdato /&gt; &lt;jpTgkode&gt;U&lt;/jpTgkode&gt; &lt;jpAgdato /&gt; &lt;jpAntved /&gt; &lt;jpSaar&gt;2015&lt;/jpSaar&gt; &lt;jpSaseknr&gt;20&lt;/jpSaseknr&gt; &lt;jpOffinnhold&gt;Testdokument 7&lt;/jpOffinnhold&gt; &lt;jpTggruppnavn&gt;Alle&lt;/jpTggruppnavn&gt; &lt;avsmot&gt; &lt;amIhtype&gt;0&lt;/amIhtype&gt; &lt;amNavn&gt;Saksbehandler Testbruker7&lt;/amNavn&gt; &lt;amAdresse&gt;Postboks 8115 Dep.&lt;/amAdresse&gt; &lt;amPostnr&gt;0032&lt;/amPostnr&gt; &lt;amPoststed&gt;OSLO&lt;/amPoststed&gt; &lt;amUtland&gt;Norge&lt;/amUtland&gt; &lt;amEpostadr&gt;sa-user.test2@difi.no&lt;/amEpostadr&gt; &lt;/avsmot&gt; &lt;avsmot&gt; &lt;amOrgnr&gt;986187243&lt;/amOrgnr&gt; &lt;amIhtype&gt;1&lt;/amIhtype&gt; &lt;amNavn&gt;EduTestOrg 1&lt;/amNavn&gt; &lt;/avsmot&gt; &lt;dokument&gt; &lt;dlRnr&gt;1&lt;/dlRnr&gt; &lt;dlType&gt;H&lt;/dlType&gt; &lt;dbTittel&gt;Testdokument 7&lt;/dbTittel&gt; &lt;dbStatus&gt;B&lt;/dbStatus&gt; &lt;veVariant&gt;P&lt;/veVariant&gt; &lt;veDokformat&gt;DOCX&lt;/veDokformat&gt; &lt;fil&gt; &lt;/fil&gt; &lt;veFilnavn&gt;Testdokument 7.DOCX&lt;/veFilnavn&gt; &lt;veMimeType&gt;application/vnd.openxmlformats-officedocument.wordprocessingml.document&lt;/veMimeType&gt; &lt;/dokument&gt; &lt;/journpost&gt; &lt;noarksak xmlns=""&gt; &lt;saId&gt;15/00020&lt;/saId&gt; &lt;saSaar&gt;2015&lt;/saSaar&gt; &lt;saSeknr&gt;20&lt;/saSeknr&gt; &lt;saPapir&gt;0&lt;/saPapir&gt; &lt;saDato&gt;2015-09-01&lt;/saDato&gt; &lt;saTittel&gt;BEST/EDU testsak&lt;/saTittel&gt; &lt;saStatus&gt;R&lt;/saStatus&gt; &lt;saArkdel&gt;Sakarkiv 2013&lt;/saArkdel&gt; &lt;saType&gt;Sak&lt;/saType&gt; &lt;saJenhet&gt;Oslo&lt;/saJenhet&gt; &lt;saTgkode&gt;U&lt;/saTgkode&gt; &lt;saBevtid /&gt; &lt;saKasskode&gt;B&lt;/saKasskode&gt; &lt;saOfftittel&gt;BEST/EDU testsak&lt;/saOfftittel&gt; &lt;saAdmkort&gt;202286&lt;/saAdmkort&gt; &lt;saAdmbet&gt;Seksjon for test 1&lt;/saAdmbet&gt; &lt;saAnsvinit&gt;difi\sa-user-test2&lt;/saAnsvinit&gt; &lt;saAnsvnavn&gt;Saksbehandler Testbruker7&lt;/saAnsvnavn&gt; &lt;saTggruppnavn&gt;Alle&lt;/saTggruppnavn&gt; &lt;sakspart&gt; &lt;spId&gt;0&lt;/spId&gt; &lt;/sakspart&gt; &lt;/noarksak&gt; &lt;/Melding&gt;</value>
+  </data>
+</root>

@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.Console"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.ServiceTests", "EduBestServiceStub.ServiceTests\EduBestServiceStub.ServiceTests.csproj", "{67AFA444-8AA7-4929-B2F3-E88175A14EBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.Slack", "EduBestServiceStub.Slack\EduBestServiceStub.Slack.csproj", "{D930E059-0F72-4A64-AB32-C2973F6FB800}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.SlackTests", "EduBestServiceStub.SlackTests\EduBestServiceStub.SlackTests.csproj", "{C6E0C836-8D8C-4E8B-8D14-841122D5BD28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{67AFA444-8AA7-4929-B2F3-E88175A14EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67AFA444-8AA7-4929-B2F3-E88175A14EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67AFA444-8AA7-4929-B2F3-E88175A14EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D930E059-0F72-4A64-AB32-C2973F6FB800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D930E059-0F72-4A64-AB32-C2973F6FB800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D930E059-0F72-4A64-AB32-C2973F6FB800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D930E059-0F72-4A64-AB32-C2973F6FB800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6E0C836-8D8C-4E8B-8D14-841122D5BD28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6E0C836-8D8C-4E8B-8D14-841122D5BD28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6E0C836-8D8C-4E8B-8D14-841122D5BD28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6E0C836-8D8C-4E8B-8D14-841122D5BD28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
