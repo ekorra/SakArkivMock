@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using EduBestServiceStub.Lib;
 using EduBestServiceStub.Lib.NoarkTypes;
+using EduBestServiceStub.Slack;
 using log4net;
 using log4net.Config;
 
@@ -36,12 +37,16 @@ namespace EduBestServiceStub.Service
         private ILog log;
         private readonly IRequestLogger requestLogger;
         private readonly bool logRequest;
+        private string slackUrl;
+        private string slackChennel;
 
         public NoarkExchange()
         {
             XmlConfigurator.Configure();
             log = LogManager.GetLogger(typeof(NoarkExchange));
             logRequest = bool.Parse(WebConfigurationManager.AppSettings["LogRequest"]);
+            slackUrl = WebConfigurationManager.AppSettings["SlackUrl"];
+            slackChennel = WebConfigurationManager.AppSettings["SlackChannel"];
             log.Info($"LogRequests : {logRequest}");
 
             if (logRequest)
@@ -82,7 +87,8 @@ namespace EduBestServiceStub.Service
             log.Info("Got request");
             requestLogger?.Log(PutMessageRequest);
             var noarkExchangeClient = new noarkExchange { Url = Resource.IntegrasjonspunktUrl };
-            var result = new PutMessageHandler(noarkExchangeClient).HandleRequest(PutMessageRequest);
+            var slackNotifier = new SlackNotifier(slackUrl, slackChennel);
+            var result = new PutMessageHandler(noarkExchangeClient, slackNotifier).HandleRequest(PutMessageRequest);
             log.Info("returning respone");
             return result;
         }

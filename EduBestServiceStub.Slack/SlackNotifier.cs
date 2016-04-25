@@ -5,21 +5,24 @@ using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using EduBestServiceStub.Lib;
 using Slack.Webhooks;
 
 namespace EduBestServiceStub.Slack
 {
-    public class SlackNotifier
+    public class SlackNotifier : INotifier
     {
         private readonly string SlackUrl =
-            "https://hooks.slack.com/services/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";
+            "";
 
         private SlackClient slackClient;
         private bool useShortMessages;
+        private string channel;
 
-        public SlackNotifier()
+        public SlackNotifier(string url, string channel)
         {
-            slackClient = new SlackClient(SlackUrl);
+            this.channel = channel;
+            slackClient = new SlackClient(url);
             useShortMessages = false;
         }
 
@@ -27,7 +30,7 @@ namespace EduBestServiceStub.Slack
         {
             var slackMessage = new SlackMessage
             {
-                Channel = "#sakarkivmock",
+                Channel = $"#{channel}",
                 Text = $"Melding fra {eduMessage.Sender}",
                 IconEmoji = Emoji.Muscle,
                 Username = "sakarkmock"
