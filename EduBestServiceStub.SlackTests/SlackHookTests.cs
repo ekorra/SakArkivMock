@@ -12,7 +12,7 @@ namespace EduBestServiceStub.SlackTests
         {
             var slackNotifier = new SlackNotifier();
 
-            var message = new EduMessage
+            var message = new EduMessage()
             {
                 Sender = "Sender",
                 Receiver = "Receiver",

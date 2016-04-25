@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EduBestServiceStub.Lib.NoarkTypes;
 using EduBestServiceStub.ServiceTests;
+using log4net.Config;
 using NSubstitute;
 
 namespace EduBestServiceStub.Service.Tests
@@ -15,10 +16,16 @@ namespace EduBestServiceStub.Service.Tests
     [TestClass()]
     public class PutMessageHandlerTests
     {
-        [ClassInitialize]
-        public void InitializeClass()
+        [AssemblyInitialize]
+        public static void Configure(TestContext tc)
         {
-            //XmlConfigurator.Configure();
+            log4net.Config.XmlConfigurator.Configure();
+        }
+
+        [ClassInitialize]
+        public static void InitializeClass(TestContext context)
+        {
+            XmlConfigurator.Configure();
         }
 
         [TestMethod]
@@ -36,7 +43,7 @@ namespace EduBestServiceStub.Service.Tests
             var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.result.type, AppReceiptTypeType.OK);
+            Assert.AreEqual(AppReceiptTypeType.OK, result.result.type);
         }
 
         [TestMethod]
@@ -71,7 +78,7 @@ namespace EduBestServiceStub.Service.Tests
             var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.result.type, AppReceiptTypeType.OK);
+            Assert.AreEqual(AppReceiptTypeType.OK, result.result.type);
         }
         
         [TestMethod]
@@ -84,7 +91,7 @@ namespace EduBestServiceStub.Service.Tests
             var result = putMessageHandler.HandleRequest(request);
             
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.result.type, AppReceiptTypeType.ERROR);
+            Assert.AreEqual(AppReceiptTypeType.ERROR, result.result.type);
         }
 
         [TestMethod]
@@ -101,7 +108,7 @@ namespace EduBestServiceStub.Service.Tests
             var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.result.type, AppReceiptTypeType.OK);
+            Assert.AreEqual(AppReceiptTypeType.OK, result.result.type);
         }
 
         [TestMethod]
@@ -148,7 +155,7 @@ namespace EduBestServiceStub.Service.Tests
             var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.result.type, AppReceiptTypeType.ERROR);
+            Assert.AreEqual(AppReceiptTypeType.ERROR, result.result.type);
         }
 
         [TestMethod]
@@ -162,7 +169,7 @@ namespace EduBestServiceStub.Service.Tests
             var result = putMessageHandler.HandleRequest(request);
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.result.type, AppReceiptTypeType.ERROR);
+            Assert.AreEqual(AppReceiptTypeType.ERROR, result.result.type);
         }
 
         private PutMessageRequestType CrateMessage()

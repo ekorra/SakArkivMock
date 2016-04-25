@@ -18,14 +18,14 @@ namespace EduBestServiceStub.Service
 
         public PutMessageHandler(INoarkExchange noarkExchangeClient)
         {
-            log = LogManager.GetLogger(typeof(NoarkExchange));
+            log = LogManager.GetLogger(typeof(PutMessageHandler));
             this.noarkExchangeClient = noarkExchangeClient;
         }
 
         public PutMessageResponseType HandleRequest(PutMessageRequestType putMessageRequest)
         {
             var eduMessage = new EduMessage(putMessageRequest);
-            if (eduMessage.IsValid)
+            if (!eduMessage.IsValid)
             {
                 return GetErrorResponse(eduMessage.ErrorList);
             }
