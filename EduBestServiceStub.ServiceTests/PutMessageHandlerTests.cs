@@ -15,6 +15,12 @@ namespace EduBestServiceStub.Service.Tests
     [TestClass()]
     public class PutMessageHandlerTests
     {
+        [ClassInitialize]
+        public void InitializeClass()
+        {
+            //XmlConfigurator.Configure();
+        }
+
         [TestMethod]
         public void GetResponseTest_BestEduMessage360Style_ReturnsOkResponse()
         {

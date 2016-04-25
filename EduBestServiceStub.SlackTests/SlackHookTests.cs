@@ -1,25 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using EduBestServiceStub.Lib;
 using EduBestServiceStub.Slack;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using EduBestServiceStub.Lib;
-using EduBestServiceStub.SlackTests;
-using NSubstitute;
-using Slack.Webhooks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EduBestServiceStub.Slack.Tests
+namespace EduBestServiceStub.SlackTests
 {
     [TestClass()]
     public class SlackHookTests
     {
         [TestMethod()]
-        public void PublishMessageTest()
+        public void testnoe()
         {
-            var slackHook = new SlackHook();
+            var slackNotifier = new SlackNotifier();
 
             var message = new EduMessage
             {
@@ -30,7 +21,7 @@ namespace EduBestServiceStub.Slack.Tests
                 JpTitle = "JpTitle"
             };
 
-            slackHook.PublishMessage(message);
+            slackNotifier.SendNotification(message);
         }
     }
 }

@@ -9,7 +9,7 @@ using Slack.Webhooks;
 
 namespace EduBestServiceStub.Slack
 {
-    public class SlackHook
+    public class SlackNotifier
     {
         private readonly string SlackUrl =
             "https://hooks.slack.com/services/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";
@@ -17,13 +17,13 @@ namespace EduBestServiceStub.Slack
         private SlackClient slackClient;
         private bool useShortMessages;
 
-        public SlackHook()
+        public SlackNotifier()
         {
             slackClient = new SlackClient(SlackUrl);
             useShortMessages = false;
         }
 
-        public void PublishMessage(Lib.EduMessage eduMessage)
+        public void SendNotification(Lib.EduMessage eduMessage)
         {
             var slackMessage = new SlackMessage
             {
