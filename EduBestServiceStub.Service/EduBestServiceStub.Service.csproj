@@ -91,6 +91,7 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <None Include="Properties\PublishProfiles\PublishToTestWin.pubxml" />
+    <None Include="Properties\PublishProfiles\PublisToTestWinNtlm.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
