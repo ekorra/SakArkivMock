@@ -110,6 +110,10 @@
       <Project>{5493cc3a-bf7f-486f-b209-3c623d85a70b}</Project>
       <Name>EduBestServiceStub.Lib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EduBestServiceStub.Slack\EduBestServiceStub.Slack.csproj">
+      <Project>{d930e059-0f72-4a64-ab32-c2973f6fb800}</Project>
+      <Name>EduBestServiceStub.Slack</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource.resx">

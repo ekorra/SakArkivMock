@@ -6,6 +6,7 @@ using System.Net;
 using System.Xml.Linq;
 using EduBestServiceStub.Lib;
 using EduBestServiceStub.Lib.NoarkTypes;
+using EduBestServiceStub.Slack;
 using log4net;
 using MessageType = EduBestServiceStub.Lib.MessageType;
 
@@ -14,18 +15,20 @@ namespace EduBestServiceStub.Service
     public class PutMessageHandler
     {
         private readonly INoarkExchange noarkExchangeClient;
-        private ILog log;
+        private readonly ILog log;
+        private readonly INotifier notifier;
 
-        public PutMessageHandler(INoarkExchange noarkExchangeClient)
+        public PutMessageHandler(INoarkExchange noarkExchangeClient, INotifier notifier = null)
         {
-            log = LogManager.GetLogger(typeof(NoarkExchange));
+            this.notifier = notifier;
+            log = LogManager.GetLogger(typeof(PutMessageHandler));
             this.noarkExchangeClient = noarkExchangeClient;
         }
 
         public PutMessageResponseType HandleRequest(PutMessageRequestType putMessageRequest)
         {
             var eduMessage = new EduMessage(putMessageRequest);
-            if (eduMessage.IsValid)
+            if (!eduMessage.IsValid)
             {
                 return GetErrorResponse(eduMessage.ErrorList);
             }
@@ -61,6 +64,8 @@ namespace EduBestServiceStub.Service
                 return GetAppReceiptResponse();
             }
 
+
+            notifier?.SendNotification(eduMessage);
             return GetErrorResponse(new Dictionary<string, string> { { "3", "Unknown Error" } });
         }
 

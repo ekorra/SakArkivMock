@@ -7,12 +7,12 @@ namespace EduBestServiceStub.SlackTests
     [TestClass()]
     public class SlackHookTests
     {
-        [TestMethod()]
+        [TestMethod(), Ignore]
         public void testnoe()
         {
-            var slackNotifier = new SlackNotifier();
+            var slackNotifier = new SlackNotifier("", "");
 
-            var message = new EduMessage
+            var message = new EduMessage()
             {
                 Sender = "Sender",
                 Receiver = "Receiver",

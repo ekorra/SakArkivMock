@@ -27,15 +27,13 @@ namespace EduBestServiceStub.Lib
             log = LogManager.GetLogger(typeof(EduMessage));
         }
 
-        public EduMessage(PutMessageRequestType putMessageRequest)
+        public EduMessage(PutMessageRequestType putMessageRequest):this()
         {
             Receiver = putMessageRequest.envelope.receiver.orgnr;
             Sender = putMessageRequest.envelope.sender.orgnr;
             ConverstationId = putMessageRequest.envelope.conversationId;
 
-            var doc = GetXmlPayload(putMessageRequest);
-            SetMetaInfo(doc);
-            Type = GetMessageType(xmlPayload);
+            SetDocument(putMessageRequest);
         }
 
         private void SetMetaInfo(XDocument doc)
@@ -53,7 +51,10 @@ namespace EduBestServiceStub.Lib
                 IsValid = false;
                 log.Error(Resource.Payload_missing);
                 ErrorList.Add("1", Resource.Payload_missing);
+                return;
             }
+            SetMetaInfo(xmlPayload);
+            Type = GetMessageType(xmlPayload);
         }
 
 
