@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DocumentDbRequestLogger.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="INotifier.cs" />
     <Compile Include="IRequestLogger.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="NoarkTypes\StatusTypeType.cs" />
     <Compile Include="NoarkTypes\TilleggsinfoType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PutMessageRequestTypeExtended.cs" />
     <Compile Include="RequestLogger.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>

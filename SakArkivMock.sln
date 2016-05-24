@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.Slack", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.SlackTests", "EduBestServiceStub.SlackTests\EduBestServiceStub.SlackTests.csproj", "{C6E0C836-8D8C-4E8B-8D14-841122D5BD28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduBestServiceStub.Lib.Tests", "EduBestServiceStub.LibTests\EduBestServiceStub.Lib.Tests.csproj", "{1B4DF9A4-1BDD-4A89-9342-257926A2E1A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C6E0C836-8D8C-4E8B-8D14-841122D5BD28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6E0C836-8D8C-4E8B-8D14-841122D5BD28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6E0C836-8D8C-4E8B-8D14-841122D5BD28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B4DF9A4-1BDD-4A89-9342-257926A2E1A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B4DF9A4-1BDD-4A89-9342-257926A2E1A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B4DF9A4-1BDD-4A89-9342-257926A2E1A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B4DF9A4-1BDD-4A89-9342-257926A2E1A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
