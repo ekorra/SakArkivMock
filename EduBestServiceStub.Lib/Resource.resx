@@ -123,4 +123,10 @@
   <data name="Unknown_payload" xml:space="preserve">
     <value>Something wrong with the payload</value>
   </data>
+  <data name="DocumentDb_DatabaseId" xml:space="preserve">
+    <value>messagedb</value>
+  </data>
+  <data name="DocumentDb_CollectionId" xml:space="preserve">
+    <value>bestedumessages</value>
+  </data>
 </root>

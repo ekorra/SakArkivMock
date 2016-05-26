@@ -30,10 +30,10 @@ namespace EduBestServiceStub.Lib
             {
                 var a = client.ReadEndpoint;
                 //var uri = UriFactory.CreateCollectionUri("messagedb", "bestedumessages");
-                var uri = UriFactory.CreateDocumentCollectionUri("messagedb", "bestedumessages");
+                var uri = UriFactory.CreateDocumentCollectionUri(Resource.DocumentDb_DatabaseId, Resource.DocumentDb_CollectionId);
                 var res = Task.Run(() => client.ReadDocumentCollectionAsync(uri)).Result;
-                var db = "messagedb";
-                Database database = client.CreateDatabaseQuery().Where(d => d.Id == "messagedb").AsEnumerable().FirstOrDefault();
+                var db = Resource.DocumentDb_DatabaseId;
+                Database database = client.CreateDatabaseQuery().Where(d => d.Id == Resource.DocumentDb_DatabaseId).AsEnumerable().FirstOrDefault();
                 var dot = client.CreateDocumentCollectionQuery((string)database.SelfLink).ToList();
                 foreach (var collection in dot)
                 {
@@ -51,7 +51,7 @@ namespace EduBestServiceStub.Lib
 
                     FeedOptions queryOptions = new FeedOptions { MaxItemCount = -1 };
                     IQueryable<PutMessageRequestType> familyQuery = this.client.CreateDocumentQuery<PutMessageRequestType>(
-                UriFactory.CreateDocumentCollectionUri("messagedb", "bestedumessages"), queryOptions).Where(f => f.Id == id);
+                UriFactory.CreateDocumentCollectionUri(Resource.DocumentDb_DatabaseId, Resource.DocumentDb_CollectionId), queryOptions).Where(f => f.Id == id);
                     var noe = familyQuery.AsEnumerable().FirstOrDefault();
 
                 }
@@ -59,7 +59,7 @@ namespace EduBestServiceStub.Lib
                 
 
                 var result = Task.Run(() => client.CreateDocumentAsync(uri, request)).Result;
-                var documentUri = UriFactory.CreateDocumentUri("messagedb", "bestedumessages", request.Id);
+                var documentUri = UriFactory.CreateDocumentUri(Resource.DocumentDb_DatabaseId, Resource.DocumentDb_CollectionId, request.Id);
                 var document = Task.Run(() => client.ReadDocumentAsync(documentUri)).Result;
                 
 

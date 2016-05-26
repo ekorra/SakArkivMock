@@ -61,6 +61,24 @@ namespace EduBestServiceStub.Lib {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to bestedumessages.
+        /// </summary>
+        internal static string DocumentDb_CollectionId {
+            get {
+                return ResourceManager.GetString("DocumentDb_CollectionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to messagedb.
+        /// </summary>
+        internal static string DocumentDb_DatabaseId {
+            get {
+                return ResourceManager.GetString("DocumentDb_DatabaseId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payload missing.
         /// </summary>
         internal static string Payload_missing {
