@@ -13,7 +13,7 @@ namespace EduBestServiceStub.Lib.Tests
     [TestClass()]
     public class DocumentDbRequestLoggerTests
     {
-        [TestMethod()]
+        [TestMethod(), Ignore]
         public void LogTest()
         {
             PutMessageRequestType request = new PutMessageRequestType
